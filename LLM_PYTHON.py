@@ -143,6 +143,7 @@ if notebook_path:
     repo_url = repo_url[0].strip()
     auth_repo_url = repo_url.replace('https://github.com', f'https://{git_username}:{GH_PAT}@github.com')
 
+<<<<<<< HEAD
 
 
 
@@ -193,3 +194,5 @@ else:
     print("Pasta já removida ou não existe.")
 
 print("\nVerificando a estrutura final em '/content/PYTHON_IA_W_GEMINI':")
+=======
+>>>>>>> 2c578b99c44b4d99c2f67cf5d2244e7b867448c0
