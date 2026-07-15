@@ -56,9 +56,6 @@ df_answers = pd.DataFrame({
 output_csv_file = 'respostas_perguntas.csv'
 df_answers.to_csv(output_csv_file, index=False, encoding='utf-8')
 
-
-
-
 output_python_file_name = "LLM_PYTHON.py"
 
 
