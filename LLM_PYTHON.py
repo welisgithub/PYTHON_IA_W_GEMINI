@@ -7,13 +7,9 @@ import nbformat
 import glob
 
 
-repo_url_https = "https://github.com/welisgithub/PYTHON_IA_W_GEMINI.git"
-repo_name = repo_url_https.split('/')[-1].replace('.git', '')
 
 
-if not os.path.exists(repo_name):
 
-repo_path = os.path.join("/content", repo_name)
 
 questions = [
     "Qual é a capital do Brasil?",
@@ -59,24 +55,6 @@ df_answers = pd.DataFrame({
 
 output_csv_file = 'respostas_perguntas.csv'
 df_answers.to_csv(output_csv_file, index=False, encoding='utf-8')
-
-import os
-
-repo_url_https = "https://github.com/welisgithub/PYTHON_IA_W_GEMINI.git"
-repo_name = repo_url_https.split('/')[-1].replace('.git', '')
-
-if not os.path.exists(repo_name):
-
-repo_name = "PYTHON_IA_W_GEMINI"
-
-
-
-
-
-
-repo_url = repo_url[0].strip()
-
-
 
 
 
@@ -136,69 +114,9 @@ if notebook_path:
     with open(output_python_full_path, 'w', encoding='utf-8') as f:
         f.write(combined_python_code)
 
-    repo_url = repo_url[0].strip()
 
 
 
 
 else:
     pass # Silently handle case where notebook path cannot be identified
-
-repo_url = repo_url[0].strip()
-
-
-
-
-
-
-repo_url = repo_url[0].strip()
-
-
-
-
-
-
-
-repo_url = repo_url[0].strip()
-
-
-
-
-
-
-repo_url = repo_url[0].strip()
-
-
-
-
-
-
-
-repo_url = repo_url[0].strip()
-
-
-
-import os
-
-repo_dir = os.getcwd()
-
-parent_dir = os.path.dirname(repo_dir)
-
-grandparent_dir = os.path.dirname(parent_dir)
-
-initial_clone_dir = os.path.join("/content", "PYTHON_IA_W_GEMINI")
-
-repo_root = "/content/PYTHON_IA_W_GEMINI"
-nested_level_1 = os.path.join(repo_root, "PYTHON_IA_W_GEMINI")
-nested_level_2 = os.path.join(nested_level_1, "PYTHON_IA_W_GEMINI")
-
-
-
-if os.path.exists(nested_level_2):
-    shutil.rmtree(nested_level_2)
-else:
-
-if os.path.exists(nested_level_1):
-    shutil.rmtree(nested_level_1)
-else:
-
