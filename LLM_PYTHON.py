@@ -138,10 +138,3 @@ if notebook_path:
     repo_url = repo_url[0].strip()
     auth_repo_url = repo_url.replace('https://github.com', f'https://{git_username}:{GH_PAT}@github.com')
 
-
-
-
-else:
-    print("ERRO: Não foi possível identificar o arquivo .ipynb do notebook atual.")
-    print("Isso pode acontecer se o notebook não está salvo no ambiente do Colab de forma padrão, ou se o nome foi alterado.")
-    print("Por favor, certifique-se de que o notebook está salvo (por exemplo, no Google Drive) ou execute 'ls -R /' para verificar onde o arquivo '.ipynb' pode estar.")
