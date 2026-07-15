@@ -61,7 +61,6 @@ df_answers.to_csv(output_csv_file, index=False, encoding='utf-8')
 
 output_python_file_name = "LLM_PYTHON.py"
 
-repo_dir = os.getcwd()
 
 notebook_path = None
 
@@ -110,7 +109,6 @@ if notebook_path:
 
     combined_python_code = '\n\n'.join(python_code_lines)
 
-    output_python_full_path = os.path.join(repo_dir, output_python_file_name)
     with open(output_python_full_path, 'w', encoding='utf-8') as f:
         f.write(combined_python_code)
 
