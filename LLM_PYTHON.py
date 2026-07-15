@@ -73,15 +73,10 @@ repo_name = "PYTHON_IA_W_GEMINI"
 
 
 
-GH_PAT = userdata.get('GH_PAT')
 
-repo_url = !git remote get-url origin
 repo_url = repo_url[0].strip()
 
-git_username = !git config user.name
-git_username = git_username[0].strip()
 
-auth_repo_url = repo_url.replace('https://github.com', f'https://{git_username}:{GH_PAT}@github.com')
 
 
 
@@ -136,27 +131,55 @@ if notebook_path:
     with open(output_python_full_path, 'w', encoding='utf-8') as f:
         f.write(combined_python_code)
 
-    GH_PAT = userdata.get('GH_PAT')
-    git_username = !git config user.name
-    git_username = git_username[0].strip()
-    repo_url = !git remote get-url origin
     repo_url = repo_url[0].strip()
-    auth_repo_url = repo_url.replace('https://github.com', f'https://{git_username}:{GH_PAT}@github.com')
 
-<<<<<<< HEAD
 
 
 
 else:
     pass # Silently handle case where notebook path cannot be identified
 
-GH_PAT = userdata.get('GH_PAT')
-git_username = !git config user.name
-git_username = git_username[0].strip()
-repo_url = !git remote get-url origin
 repo_url = repo_url[0].strip()
-auth_repo_url = repo_url.replace('https://github.com', f'https://{git_username}:{GH_PAT}@github.com')
 
+
+
+
+print("Alterações locais commitadas com sucesso.")
+
+
+repo_url = repo_url[0].strip()
+
+
+print("Operações de git pull e git push concluídas.")
+
+
+print("Estratégia de git pull configurada para 'merge'.")
+
+
+
+repo_url = repo_url[0].strip()
+
+
+print("Operações de git pull e git push concluídas (após configuração da estratégia).")
+
+
+
+print("Conflito resolvido e commitado com sucesso.")
+
+repo_url = repo_url[0].strip()
+
+
+print("Operação de git push concluída.")
+
+
+
+
+print("Conflito resolvido e commitado, favorecendo a versão local do LLM_PYTHON.py.")
+
+repo_url = repo_url[0].strip()
+
+
+print("Operação de git push concluída após resolução de conflito.")
 
 import os
 
@@ -194,5 +217,3 @@ else:
     print("Pasta já removida ou não existe.")
 
 print("\nVerificando a estrutura final em '/content/PYTHON_IA_W_GEMINI':")
-=======
->>>>>>> 2c578b99c44b4d99c2f67cf5d2244e7b867448c0
