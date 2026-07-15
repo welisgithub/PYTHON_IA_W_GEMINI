@@ -121,7 +121,12 @@ if notebook_path:
     python_code_lines = []
     for cell in nb.cells:
         if cell.cell_type == 'code':
-            clean_code = [line for line in cell.source.splitlines() if not line.strip().startswith('#') and not line.strip().startswith('!') and not line.strip().startswith('%')] # Remove comentários e comandos mágicos/shell
+            clean_code = [line for line in cell.source.splitlines() if
+                            not line.strip().startswith('#') and
+                            not line.strip().startswith('!') and
+                            not line.strip().startswith('%') and
+                            'userdata.get(\'GH_PAT\')' not in line and # General check for GH_PAT retrieval
+                        ]
             if clean_code:
                 python_code_lines.append('\n'.join(clean_code))
 
@@ -144,76 +149,56 @@ repo_url = repo_url[0].strip()
 
 
 
-print("Alterações locais commitadas com sucesso.")
 
 
 repo_url = repo_url[0].strip()
 
 
-print("Operações de git pull e git push concluídas.")
 
 
-print("Estratégia de git pull configurada para 'merge'.")
 
 
 
 repo_url = repo_url[0].strip()
 
 
-print("Operações de git pull e git push concluídas (após configuração da estratégia).")
 
 
 
-print("Conflito resolvido e commitado com sucesso.")
 
 repo_url = repo_url[0].strip()
 
 
-print("Operação de git push concluída.")
 
 
 
 
-print("Conflito resolvido e commitado, favorecendo a versão local do LLM_PYTHON.py.")
 
 repo_url = repo_url[0].strip()
 
 
-print("Operação de git push concluída após resolução de conflito.")
 
 import os
 
 repo_dir = os.getcwd()
-print(f"Diretório de trabalho atual: {repo_dir}")
 
 parent_dir = os.path.dirname(repo_dir)
-print(f"Conteúdo do diretório pai ({parent_dir}):")
 
 grandparent_dir = os.path.dirname(parent_dir)
-print(f"\nConteúdo do diretório avô ({grandparent_dir}):")
 
 initial_clone_dir = os.path.join("/content", "PYTHON_IA_W_GEMINI")
-print(f"\nConteúdo do diretório de clone inicial ({initial_clone_dir}):")
 
 repo_root = "/content/PYTHON_IA_W_GEMINI"
 nested_level_1 = os.path.join(repo_root, "PYTHON_IA_W_GEMINI")
 nested_level_2 = os.path.join(nested_level_1, "PYTHON_IA_W_GEMINI")
 
-print(f"Movendo conteúdo de '{nested_level_2}' para '{repo_root}'...")
 
 
-print(f"\nRemovendo pasta aninhada: '{nested_level_2}'")
 if os.path.exists(nested_level_2):
     shutil.rmtree(nested_level_2)
-    print("Removido com sucesso.")
 else:
-    print("Pasta já removida ou não existe.")
 
-print(f"\nRemovendo pasta aninhada: '{nested_level_1}'")
 if os.path.exists(nested_level_1):
     shutil.rmtree(nested_level_1)
-    print("Removido com sucesso.")
 else:
-    print("Pasta já removida ou não existe.")
 
-print("\nVerificando a estrutura final em '/content/PYTHON_IA_W_GEMINI':")
