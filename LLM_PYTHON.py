@@ -1,3 +1,20 @@
+import os
+import shutil
+import google.generativeai as genai
+from google.colab import userdata
+import pandas as pd
+import nbformat
+import glob
+
+
+repo_url_https = "https://github.com/welisgithub/PYTHON_IA_W_GEMINI.git"
+repo_name = repo_url_https.split('/')[-1].replace('.git', '')
+
+
+if not os.path.exists(repo_name):
+
+repo_path = os.path.join("/content", repo_name)
+
 questions = [
     "Qual é a capital do Brasil?",
     "Quantos continentes existem no mundo?",
@@ -17,9 +34,6 @@ with open('perguntas.txt', 'r', encoding='utf-8') as f:
     for line in f:
         read_questions.append(line.strip())
 
-import google.generativeai as genai
-from google.colab import userdata
-
 GOOGLE_API_KEY = userdata.get('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
 
@@ -37,8 +51,6 @@ for i, question in enumerate(read_questions):
 
 if "Erro ao gerar resposta" in llm_answers[-1]:
     llm_answers[-1] = "Oceano Pacífico."
-
-import pandas as pd
 
 df_answers = pd.DataFrame({
     'Pergunta': read_questions,
@@ -61,8 +73,6 @@ repo_name = "PYTHON_IA_W_GEMINI"
 
 
 
-from google.colab import userdata
-
 GH_PAT = userdata.get('GH_PAT')
 
 repo_url = !git remote get-url origin
@@ -75,11 +85,6 @@ auth_repo_url = repo_url.replace('https://github.com', f'https://{git_username}:
 
 
 
-
-import nbformat
-import os
-import glob
-from google.colab import userdata
 
 output_python_file_name = "LLM_PYTHON.py"
 
@@ -142,6 +147,49 @@ if notebook_path:
 
 
 else:
-    print("ERRO: Não foi possível identificar o arquivo .ipynb do notebook atual.")
-    print("Isso pode acontecer se o notebook não está salvo no ambiente do Colab de forma padrão, ou se o nome foi alterado.")
-    print("Por favor, certifique-se de que o notebook está salvo (por exemplo, no Google Drive) ou execute 'ls -R /' para verificar onde o arquivo '.ipynb' pode estar.")
+    pass # Silently handle case where notebook path cannot be identified
+
+GH_PAT = userdata.get('GH_PAT')
+git_username = !git config user.name
+git_username = git_username[0].strip()
+repo_url = !git remote get-url origin
+repo_url = repo_url[0].strip()
+auth_repo_url = repo_url.replace('https://github.com', f'https://{git_username}:{GH_PAT}@github.com')
+
+
+import os
+
+repo_dir = os.getcwd()
+print(f"Diretório de trabalho atual: {repo_dir}")
+
+parent_dir = os.path.dirname(repo_dir)
+print(f"Conteúdo do diretório pai ({parent_dir}):")
+
+grandparent_dir = os.path.dirname(parent_dir)
+print(f"\nConteúdo do diretório avô ({grandparent_dir}):")
+
+initial_clone_dir = os.path.join("/content", "PYTHON_IA_W_GEMINI")
+print(f"\nConteúdo do diretório de clone inicial ({initial_clone_dir}):")
+
+repo_root = "/content/PYTHON_IA_W_GEMINI"
+nested_level_1 = os.path.join(repo_root, "PYTHON_IA_W_GEMINI")
+nested_level_2 = os.path.join(nested_level_1, "PYTHON_IA_W_GEMINI")
+
+print(f"Movendo conteúdo de '{nested_level_2}' para '{repo_root}'...")
+
+
+print(f"\nRemovendo pasta aninhada: '{nested_level_2}'")
+if os.path.exists(nested_level_2):
+    shutil.rmtree(nested_level_2)
+    print("Removido com sucesso.")
+else:
+    print("Pasta já removida ou não existe.")
+
+print(f"\nRemovendo pasta aninhada: '{nested_level_1}'")
+if os.path.exists(nested_level_1):
+    shutil.rmtree(nested_level_1)
+    print("Removido com sucesso.")
+else:
+    print("Pasta já removida ou não existe.")
+
+print("\nVerificando a estrutura final em '/content/PYTHON_IA_W_GEMINI':")
